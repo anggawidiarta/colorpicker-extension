@@ -17,7 +17,7 @@ const showColors = () => {
     .map(
       (color) => ` <li class="color">
     <span class="rect" style="background: ${color};border:1px solid ${
-        color == "#ffffff"||"#7fb77e" ? "#000000" : color
+        color == "#ffffff" || "#7fb77e" ? "#000000" : color
       }"></span><span class="value" data-color="${color}">${color}</span>
   </li> `
     )
