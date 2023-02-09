@@ -17,7 +17,7 @@ const showColors = () => {
     .map(
       (color) => ` <li class="color">
     <span class="rect" style="background: ${color};border:1px solid ${
-        color == "#ffffff" ? "#ccc" : color
+        color == "#ffffff"||"#7fb77e" ? "#000000" : color
       }"></span><span class="value" data-color="${color}">${color}</span>
   </li> `
     )
@@ -48,8 +48,8 @@ const activateEyeDropper = () => {
     } catch (error) {
       console.log("Failed To Copy The Color Code");
     }
+    document.body.style.display = "block";
   }, 10);
-  document.body.style.display = "block";
 };
 
 const clearAllColors = () => {
