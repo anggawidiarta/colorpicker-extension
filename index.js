@@ -32,20 +32,24 @@ const showColors = () => {
 };
 showColors();
 
-const activateEyeDropper = async () => {
-  try {
-    const eyeDropper = new EyeDropper();
-    const { sRGBHex } = await eyeDropper.open();
-    navigator.clipboard.writeText(sRGBHex);
+const activateEyeDropper = () => {
+  document.body.style.display = "none";
+  setTimeout(async () => {
+    try {
+      const eyeDropper = new EyeDropper();
+      const { sRGBHex } = await eyeDropper.open();
+      navigator.clipboard.writeText(sRGBHex);
 
-    if (!pickedColors.includes(sRGBHex)) {
-      pickedColors.push(sRGBHex);
-      localStorage.setItem("picked-colors", JSON.stringify(pickedColors));
-      showColors();
+      if (!pickedColors.includes(sRGBHex)) {
+        pickedColors.push(sRGBHex);
+        localStorage.setItem("picked-colors", JSON.stringify(pickedColors));
+        showColors();
+      }
+    } catch (error) {
+      console.log("Failed To Copy The Color Code");
     }
-  } catch (error) {
-    console.log(error);
-  }
+  }, 10);
+  document.body.style.display = "block";
 };
 
 const clearAllColors = () => {
